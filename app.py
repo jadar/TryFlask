@@ -2,20 +2,25 @@ from flask import *
 from flask_mongoengine import MongoEngine, Document
 from bson import json_util
 
+# Create Flask app.
 app = Flask(__name__)
-app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
 
+# Configure the database.
+app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
 db = MongoEngine(app)
 
+# Define a Post object for the database.
 class Post(Document):
 	author = db.StringField(required=True)
 	body = db.StringField(required=True, min_length=0)
 	title = db.StringField(required=True, min_length=0)
 
+# Define a root route. (Say that 10x quick..)
 @app.route('/')
 def base():
 	return "/posts, GET POST, Gets or creates Post records."
 
+# Define a 'posts' route which can create posts and return a list of all posts (in JSON).
 @app.route('/posts', methods=['GET', 'POST'])
 def posts():
 	if request.method == 'POST':
@@ -25,6 +30,7 @@ def posts():
 		objects = Post.objects
 		return jsonify(objects)
 
+# Helper method to create posts.
 def createPost(title, body, author):
 	post = Post(title=title, body=body, author=author)
 	post.save()
