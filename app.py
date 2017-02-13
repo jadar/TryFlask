@@ -1,12 +1,22 @@
 from flask import *
 from flask_mongoengine import MongoEngine, Document
 from bson import json_util
+import os 
+
+if 'MONGODB_URI' in os.environ.keys():
+	mongo_uri = os.environ['MONGODB_URI']
+else:
+	mongo_uri = 'localhost'
+print(mongo_uri)
 
 # Create Flask app.
 app = Flask(__name__)
 
 # Configure the database.
-app.config['MONGODB_SETTINGS'] = {'DB': 'test'}
+app.config['MONGODB_SETTINGS'] = {
+	'db': 'test',
+	'host': mongo_uri
+}
 db = MongoEngine(app)
 
 # Define a Post object for the database.

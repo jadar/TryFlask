@@ -1,5 +1,5 @@
 ##What is a database?
-Da•ta•base  
+Da•ta•base
 _noun_
 
 * Stores data in an organized, logical manner.

@@ -1,2 +1,4 @@
 Flask==0.12
 flask_mongoengine==0.8.2
+gunicorn
+gevent
