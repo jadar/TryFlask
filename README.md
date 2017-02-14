@@ -22,7 +22,7 @@ _noun_
 
 ##Proposal
 
-Flask + MongoDB
+Flask + MySQL
 
 ###Flask (web framework)
 * Flask is a micro web framework written in Python. 
@@ -39,9 +39,6 @@ Creating an app is incredibly simple: see [here](https://github.com/jadar/TryFla
  - Well documented
  - Doesn't require tons of maintenance. 
  - Written in Python.
-* MongoDB
- - NoSQL, literally no SQL necessary.
- - Already in use locally, we can create a new store or use the existing one.
 
 
 
